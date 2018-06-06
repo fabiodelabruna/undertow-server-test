@@ -24,8 +24,21 @@ public class LoggingHandler implements HttpHandler {
 
     @Override
     public void handleRequest(HttpServerExchange exchange) throws Exception {
-        LOGGER.info(toString(exchange.getInputStream()).trim());
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        InputStream inputStream = exchange.getInputStream();
+        inputStream.mark(2);
+		LOGGER.info(toString(inputStream).trim());
+
         this.next.handleRequest(exchange);
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     }
 
     private String toString(InputStream is) throws IOException {
